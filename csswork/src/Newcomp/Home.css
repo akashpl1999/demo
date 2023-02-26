@@ -1,0 +1,272 @@
+
+.home-main{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+
+
+
+
+.main1{
+
+
+    display: flex;
+
+    width: 100%;
+
+    position: relative;
+
+    flex-direction: row;
+
+    height: 100%;
+   
+}
+
+.main1 img{
+    width: 100%;
+
+}
+
+.main1 .sub-main1{
+
+    position: absolute;
+    display: flex;
+    top:70%;
+    left:5%;
+    align-self: flex-end;
+   
+
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color:lightblue ;
+    width: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.card button{
+    padding: 12px;
+    width: 120px;
+    border-radius: 20px;
+    background-color: blueviolet;
+    color: azure;
+    border: 0px solid transparent;
+
+}
+
+
+
+
+
+.main2{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    top:250px;
+    height: 100vh;
+
+}
+
+
+
+
+.sub-main2{
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 33%;
+    height: 100%;
+
+}
+
+.sub-main2  img {
+
+    width: 100%;
+    height: 90%;
+ 
+}
+
+
+
+
+.sub-card1{
+    width: 250px;
+    height: 200px;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: aqua;
+    border-radius: 20px;
+
+}
+
+ .sub-card2 {
+    width: 250px;
+    height: 230px;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 20px;
+ 
+}
+
+.sub-card2 button{
+    border-radius: 20px;
+    background-color: white;
+    width: 130px;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+
+.card-contener{
+
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+    top: 300px;
+    background-color: lightgray;
+
+}
+
+.item-text h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+
+}
+
+
+.item-head {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+
+}
+
+
+
+.card-item1{
+
+     display: flex;
+     flex-direction: column;
+     width: 250px;
+     height: 250px;
+     background-color: blueviolet;
+     color: white;
+     margin: 10px;
+     padding: 15px;
+     border-radius: 20px;
+
+
+
+}
+
+.slide-card{
+    display: flex;
+    position: relative;
+    top:350px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.slide2{
+
+     border-radius: 20px;
+     position: relative;
+    
+     height: 200px;
+     width: 100%;
+     top:200px;
+     color: aliceblue;
+     background-color: rgb(22, 22, 101);
+     margin-left: 100px;
+     
+  
+ 
+    
+     
+}
+
+.slide1 img{
+
+    z-index: 1;  
+    width: 600px;
+    height: 400px;
+    position: absolute;
+     top:10px;
+     left:300px ;
+    
+    
+
+    
+
+}
+
+.slide3{
+
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    z-index: 1;  
+
+
+
+}
+
+.slide3 img{
+    width: 400px ;
+    height: 350px;
+
+}
+
+
+.slide4 img{
+    width: 400px ;
+    height: 350px;
+
+}
+
+.slide4{
+
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    z-index: 1;  
+
+
+
+}

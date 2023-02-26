@@ -1,0 +1,28 @@
+
+.main{
+   
+    display: grid;
+    grid-template-columns: auto auto auto; 
+    grid-template-rows: 100px 100vh 100vh ;
+    padding: 10px;
+    gap: 10px 10px;
+    height: 70vh;
+
+}
+
+/* .sub1{
+    padding: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border: 1px solid black;
+   
+
+} */
+
+.sub{
+
+    padding: 10px;
+    border: 1px solid black;
+ 
+   
+}

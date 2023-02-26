@@ -1,0 +1,133 @@
+
+.home-main{
+    margin: 1px;
+
+}
+
+.home-main img{
+    width: 100vw;
+    position: relative;
+}
+
+.home-heading{
+    position: absolute;
+    top: 400px;
+    right: 50px;
+
+
+}
+
+
+.home-heading h1{
+    font-size: 65px;
+    font-weight: 10000;
+    color: black;
+    text-align: left;
+}
+
+
+.home-heading p{
+
+    font-size: 40px;
+    color: rgb(34, 100, 157);
+    
+
+}
+
+
+.main-card{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    margin: 10px;
+    flex-wrap: wrap;
+    width: 800px;
+    top: 400px;
+    left: 10px;
+}
+
+
+.sub-card{
+
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: 200px;
+    width: 250px ;
+    background-color: rgb(225, 232, 232);
+    border-radius: 25px;
+
+
+}
+
+.round{
+    height: 80px;
+    width: 80px;
+    border-radius: 60%;
+    background-color: lightgray;
+    border: 0px solid black;
+    margin: 5px;
+}
+
+
+.content-main{
+
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgray;
+   
+
+
+
+}
+
+.content-main h1 p{
+
+    align-items: center;
+    text-align: center;
+    font-size: larger;
+
+}
+
+
+.content-div2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1000px;
+
+
+}
+
+.card-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 200px;
+    width: 450px;
+    background-color: rgb(192, 205, 201);
+    margin: 20px;
+
+}
+
+
+.logo-right{
+      background-color: blue;
+       border-radius:50%;
+       padding:10px;
+       margin:20px;
+
+}
+
+.text-card{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,456 @@
+What is a microservice architecture, and how does it differ from a monolithic architecture?
+   
+   this is technology in which the  the large applications are developed , by combination os mutliple function module , this are also called to services, this service are designed to per form perticular opertion , this service
+    are commuincate with each other throuth,api gateways ,
+     let take example that e-commerce websites  , in that microservice
+    having  user service , order service , product service  are there, 
+    we can see that eact servers are provide differt funtionality , 
+
+     so this serivece are indepentdent and self-contained , 
+     so it does not affects the fuctinality of the othres services
+      as it is indendent each serivice can be easly scalble and high efficency 
+
+
+
+
+
+    features of this
+
+
+    loosly coupled  --indepented of each other
+
+    high cohision - each sevice have perticular function opertion to perform,
+
+    it provides high flexibility and scalibilty
+
+    this can deployed independenty  (docker)
+
+    this can be mangeble by small team,
+
+    fast development
+
+
+
+    
+
+
+What are some benefits of a microservices architecture?
+
+     
+
+How do microservices communicate with each other in a distributed system?
+
+ =====>  sync async apigateways, event driven programing
+
+
+
+What is an API Gateway, and how does it fit into a microservices architecture?
+
+
+  api gateways acts as signal entry point for all the client request , it provides the routing of request to particular service and load balnacess,
+
+   and also provides authntication and autrization to req send by client,
+
+     for example to do purches functionalty, the client have make many 
+
+     req like it shlud check the  user model to authticate and move onto
+
+      purches components
+
+
+
+      to over come from this this can be use
+
+
+
+
+How do you handle authentication and authorization in a microservices architecture?
+
+What is containerization, and how can it help with microservices deployment?
+
+How do you ensure consistency and data integrity in a distributed system?
+
+    ===>  by using distrubuted database like mongodb we can achive this
+
+How do you handle failures and errors in a microservices architecture?
+
+   ===> circuit breakes, centerlized logging and monitoring , health checks, 
+
+What is service discovery, and how can it help with microservices deployment?
+
+How do you design and implement a scalable and resilient microservices architecture?
+
+How do you ensure that your microservices are loosely coupled and have high cohesion?
+
+How do you test and monitor your microservices architecture?
+
+How do you handle versioning and backward compatibility in a microservices architecture?
+
+What are some common challenges and pitfalls of microservices, and how do you address them?
+
+Have you worked with any specific microservices tools or frameworks, such as Kubernetes, Docker, or Istio? If so, can you describe your experience with them?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ms sql templet
+
+
+
+
+
+
+const express = require('express');
+const cors = require('cors');
+const sql = require('mssql');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const config = {
+  user: 'your_username',
+  password: 'your_password',
+  server: 'your_server_name',
+  database: 'your_database_name',
+};
+
+app.get('/api/customers', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request().query('SELECT * FROM Customers');
+    res.send(result.recordset);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+app.post('/api/customers', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request()
+      .input('FirstName', sql.VarChar, req.body.FirstName)
+      .input('LastName', sql.VarChar, req.body.LastName)
+      .input('Age', sql.Int, req.body.Age)
+      .query('INSERT INTO Customers (FirstName, LastName, Age) VALUES (@FirstName, @LastName, @Age)');
+    res.send('Customer added successfully');
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+app.put('/api/customers/:id', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request()
+      .input('id', sql.Int, req.params.id)
+      .input('FirstName', sql.VarChar, req.body.FirstName)
+      .input('LastName', sql.VarChar, req.body.LastName)
+      .input('Age', sql.Int, req.body.Age)
+      .query('UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, Age = @Age WHERE id = @id');
+    res.send('Customer updated successfully');
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+app.delete('/api/customers/:id', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request()
+      .input('id', sql.Int, req.params.id)
+      .query('DELETE FROM Customers WHERE id = @id');
+    res.send('Customer deleted successfully');
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
+
+const express = require('express');
+const cors = require('cors');
+const sql = require('mssql');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const config = {
+  user: 'your_username',
+  password: 'your_password',
+  server: 'your_server_name',
+  database: 'your_database_name',
+};
+
+app.get('/api/customers', function(req, res) {
+  sql.connect(config, function(err) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Something went wrong');
+      return;
+    }
+    var request = new sql.Request();
+    request.query('SELECT * FROM Customers', function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Something went wrong');
+        return;
+      }
+      res.send(result.recordset);
+    });
+  });
+});
+
+app.post('/api/customers', function(req, res) {
+  sql.connect(config, function(err) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Something went wrong');
+      return;
+    }
+    var request = new sql.Request();
+    request.input('FirstName', sql.VarChar, req.body.FirstName);
+    request.input('LastName', sql.VarChar, req.body.LastName);
+    request.input('Age', sql.Int, req.body.Age);
+    request.query('INSERT INTO Customers (FirstName, LastName, Age) VALUES (@FirstName, @LastName, @Age)', function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Something went wrong');
+        return;
+      }
+      res.send('Customer added successfully');
+    });
+  });
+});
+
+app.put('/api/customers/:id', function(req, res) {
+  sql.connect(config, function(err) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Something went wrong');
+      return;
+    }
+    var request = new sql.Request();
+    request.input('id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// google cloude plotform
+
+
+it is cloude computing plotform and it provide the infrastuere  and is provide d from goole , it allws user to store the data in the google servers
+
+and provide servies , to achtive the  relibility, high productivty, 
+
+
+
+
+cloude computing is plotform used database and security , dyanmic scalblity of server, remote access to device,faster comutation, reduce the cost and overhead
+
+
+
+clodue service models
+
+IAAS ==>infrasture as services here  you have manage the data, application, middlewere,o/s  and plotform provides server network stogre mange maduthe
+
+PAAS ==>Plotform as service , all things are handle by plotform , you have to work on data application  , big application example were it notable  solve each require
+
+
+SAAS==>software as services , allmagenged by sowter omly , work on  data
+
+
+
+google cloude plotform:
+
+
+  highly scalable
+  cost efficetive
+  custom mechine types
+  serverless
+  bigdata analisyts
+  cloude ai
+  api handle plotform
+  internet of things
+
+
+
+  CLOUD CDN  ARE THE EDGE CONNECTION IN WHICH IT PROVIDES ACCESS TO ALL RELIGINALS 
+
+
+
+   1>computing ENGINE:
+
+   IT IS IAAS infrastuere AS SERVICE
+
+   HERE WE LANCHES VIRTUAL MECHINE OUR
+
+
+   2> APP ENGINE :
+   PLATFORM AS infrastuere
+   USED DEPLOY THE BAck end PART
+
+
+   3> containrer ENGINE:
+   this aRE GOOGLE KUBERINITEES ENGINE 
+   THIS ARE USE TO DEPLOY MANGE AND SCALE THE CONTAINERIZED application
+  IT WORKS ON MULTIPLE PLOTFROM
+
+    4>CONTAINER REGISTRY:
+
+    IT SUPORT  containrer ENGINE TO PERFORM THIS APERTION
+
+
+
+    5>CLOUDE FUNNCTION>
+
+
+
+
+ GOOGLE CLOUDE stogre AND services
+
+
+   1>CLOUDE STOREGE -
+
+   2>CLOUD BIGTABLE - WORK ON NO TABLE DATA , UNSTRURED DATABASE
+
+   3>CLOUD DATASTORE- HIRARCIAL DATABASE
+
+   4>CLOUD SQL -WORKS ON STRURED DATA
+
+   5>PERSISTENT DISK  -WHEN WE REMOVE HOST THE WILL BE AUMTICAL DELETED TO OVER COME FROM THIS WE UES THIS HERE IT NOT DELETES THE DATA
+
+
+
+google cloude network,and service:
+
+
+
+1>clodue virtual machine : handle apis 
+
+2>clodue load balancing: i works on input trafic from difrent intsances
+                  in order to scale appliction in both horizontal and verticaly,
+         it mainly makes that it divertes trafic to differnt node to balnace  this         
+
+ 3>cloude CDN: content delivery network
+
+   data lentancy improves,  
+
+   if  i had data center in bangolore , the service to near to bongoler place are good, as distance incress , lentancy also increse it take time to feates data , to over
+   come from this , it work, stores recent responese in edge connection  
+
+
+4>cloude DNS: DOMAIN NAME services
+
+
+  IT CONTROLS DOMAIN NAMES , IT GIVES ACCESS TO OTHRES  TO ACCESS  DATA , BASED ON DOMAIN NAMES
+
+   IF WE WANT ACCESS DATA WE SHOLUD KNOW WHERE DOES THIS DATA RESISTES BY DOMAIMN NAME
+
+
+
+   
+
+  google security serivece:
+
+
+   1> google resoures manger or cloude resourec manger :
+
+       here this are delevpes strctures , in this strures  we put all of our resouces 
+
+        it provides idea that whom we are given access
+      
+
+     2>   cloud  IAM : it inseures that user get access  how it get  
+
+          in organization 
+              we have  develeps team and  non deveers team ,as user you can give access to particular team of they neaded 
+
+
+
+      3> cloude security scanners: it scans the entire application , web
+        
+        as the application having url and n number of virtual machines , and this are accessed by user with different resouces, this
+         scannes  allof this to insures the security of the application
+
+   4>
+clodue plotform security:it provides the security to entire application
+
+
+
+google cloude mangemwnt and delvepment services:
+
+
+
+mangemet tools:
+
+
+     clode shell : this is use to communicate with application(googlr clode) through commdline,
+
+     monitoring : this are application with are used  maointaring goole cloudes
+
+     clode apis : { it is used to handle the apis}
+     
+     clode console: it is plotform were it shows the waht are the engines we used in our projects etc
+
+     error handleing reportes: to handle the errs in clode app
+
+
+
+delvepment tooles:
+
+    clode sdk
+    deployment mangers
+
+
+
+

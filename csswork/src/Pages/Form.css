@@ -1,0 +1,35 @@
+
+.main-container{
+    display: flex;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+
+}
+
+.avatar{
+
+
+    margin-left: 180px;
+    align-items: center;
+    
+}
+
+.sub{
+    padding: 10px;
+    width: 400px;
+    
+}
+
+.btn{
+    background-color: blue;
+    width: 400px;
+    color: aliceblue;
+  
+
+}

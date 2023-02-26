@@ -1,0 +1,93 @@
+{
+    "data": [
+  
+  
+      {
+  
+        "id": 1,
+        "question":"What is a closure in JavaScript ?",
+        "options":[
+           {"id": "a",   "values":"A function that has access to its outer scope, even after the function has returned."}, 
+           {"id": "b",   "values":" An inner function that has access to its outer function's variables."},
+           {"id": "c",   "values":" A feature in JavaScript that allows a function to keep its scope, even after it has returned."}, 
+           {"id": "d",   "values":"An object that provides access to its inner scope from an outer scope."} 
+          ],
+  
+        "answer": "a"
+      
+       },
+  
+  
+       {
+  
+        "id": 2,
+        "question":" sum of the 23+12=",
+        "options":[
+           {"id": "a",   "values":"45"},
+           {"id": "b",   "values":"34"},
+           {"id": "c",   "values":"35"}, 
+           {"id": "d",   "values":"29"} 
+          ],
+  
+        "answer": "c",
+        "selected":false
+  
+  
+       },
+  
+  
+       {
+  
+        "id": 3,
+        "question":" sum of the 13+12=",
+        "options":[
+           {"id": "a",   "values":"45"  },
+           {"id": "b",   "values":"34" },
+           {"id": "c",   "values":"35" }, 
+           {"id": "d",   "values":"25"  } 
+          ],
+  
+        "answer": "d",
+        "selected":false
+  
+  
+       },
+  
+       {
+  
+        "id": 4,
+        "qid":1,
+        "question":" sum of the 13+12=",
+        "options":[
+           {"id": "a",   "values":"13+15"},
+           {"id": "b",   "values":"20+5"},
+           {"id": "c",   "values":"30+4"}, 
+           {"id": "d",   "values":"25"} 
+          ],
+  
+        "answer": ["b","d"]
+        
+  
+         
+       },
+       {
+  
+        "id": 5,
+        "qid":1,
+        "question":" sum of the 90+12=",
+        "options":[
+           {"id": "a",   "values":"100+2"},
+           {"id": "b",   "values":"20+5"},
+           {"id": "c",   "values":"30+4"}, 
+           {"id": "d",   "values":"102"} 
+          ],
+  
+        "answer": ["a","d"]
+        
+  
+         
+       }
+  
+  
+       ]
+  }
